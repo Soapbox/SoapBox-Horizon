@@ -16,7 +16,7 @@ class RedisUserProvider implements UserProvider
      */
     public function retrieveById($identifier)
     {
-        extract(Redis::hgetall("soapbox-horizon:users:$identifier"));
+        extract(Redis::hgetall("user:$identifier"));
         return new User($identifier, $name, $email);
     }
 

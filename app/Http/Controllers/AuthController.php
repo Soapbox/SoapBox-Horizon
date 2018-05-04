@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Whitelist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Redirect;
@@ -17,13 +18,12 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-        $emails = collect(Redis::smembers('soapbox-horizon:emails'));
 
-        if (!$emails->contains($user->email)) {
+        if (!Whitelist::contains($user->email)) {
             abort(403);
         }
 
-        Redis::hmset("soapbox-horizon:users:{$user->id}", [
+        Redis::hmset("user:{$user->id}", [
             'name' => $user->name,
             'email' => $user->email,
         ]);
