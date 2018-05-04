@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('auth/google', 'AuthController@redirectToProvider');
 Route::get('auth/google/callback', 'AuthController@handleProviderCallback');
+Route::get('logout', 'AuthController@logout');

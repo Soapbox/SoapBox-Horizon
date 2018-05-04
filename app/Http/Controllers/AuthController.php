@@ -32,4 +32,10 @@ class AuthController extends Controller
 
         return Redirect::to('/horizon');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return view('logout');
+    }
 }

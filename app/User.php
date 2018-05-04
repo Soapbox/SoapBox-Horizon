@@ -50,7 +50,7 @@ class User implements Authenticatable
      */
     public function getRememberToken()
     {
-        throw new \Exception('Method getRememberToken() is not implemented.');
+        return '';
     }
 
     /**
@@ -61,7 +61,6 @@ class User implements Authenticatable
      */
     public function setRememberToken($value)
     {
-        throw new \Exception('Method setRememberToken() is not implemented.');
     }
 
     /**
@@ -71,6 +70,6 @@ class User implements Authenticatable
      */
     public function getRememberTokenName()
     {
-        throw new \Exception('Method getRememberTokenName() is not implemented.');
+        '';
     }
 }

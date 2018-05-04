@@ -29,7 +29,7 @@ class RedisUserProvider implements UserProvider
      */
     public function retrieveByToken($identifier, $token)
     {
-        throw new \Exception('Method retrieveByToken() is not implemented.');
+        return null;
     }
 
     /**
@@ -41,7 +41,6 @@ class RedisUserProvider implements UserProvider
      */
     public function updateRememberToken(Authenticatable $user, $token)
     {
-        throw new \Exception('Method updateRememberToken() is not implemented.');
     }
 
     /**
@@ -52,7 +51,7 @@ class RedisUserProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        throw new \Exception('Method retrieveByCredentials() is not implemented.');
+        return null;
     }
 
     /**
@@ -64,6 +63,6 @@ class RedisUserProvider implements UserProvider
      */
     public function validateCredentials(Authenticatable $user, array $credentials)
     {
-        throw new \Exception('Method validateCredentials() is not implemented.');
+        return false;
     }
 }
