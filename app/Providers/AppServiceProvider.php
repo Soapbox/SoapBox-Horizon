@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Laravel\Horizon\Horizon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Horizon::auth(function () {
+            return Auth::check();
+        });
     }
 
     /**

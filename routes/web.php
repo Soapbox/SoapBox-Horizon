@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return Redirect::to('/horizon');
+    }
+
+    return Redirect::to('/auth/google');
 });
+
+Route::get('auth/google', 'AuthController@redirectToProvider');
+Route::get('auth/google/callback', 'AuthController@handleProviderCallback');
