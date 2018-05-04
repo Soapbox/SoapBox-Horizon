@@ -19,14 +19,4 @@ class AppServiceProvider extends ServiceProvider
             return Auth::check();
         });
     }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
 }
