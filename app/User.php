@@ -6,6 +6,13 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class User implements Authenticatable
 {
+    /**
+     * Create a new User
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $email
+     */
     public function __construct(string $id, string $name, string $email)
     {
         $this->id = $id;
@@ -56,7 +63,8 @@ class User implements Authenticatable
     /**
      * Set the token value for the "remember me" session.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return void
      */
     public function setRememberToken($value)

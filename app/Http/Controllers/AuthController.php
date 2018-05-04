@@ -3,19 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Whitelist;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 
-class AuthController extends Controller
+class AuthController
 {
-    public function redirectToProvider()
+    /**
+     * Initiate the login flow
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirectToProvider(): RedirectResponse
     {
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleProviderCallback()
+    /**
+     * Finalize the login flow
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function handleProviderCallback(): RedirectResponse
     {
         $user = Socialite::driver('google')->user();
 
@@ -33,7 +45,12 @@ class AuthController extends Controller
         return Redirect::to('/horizon');
     }
 
-    public function logout()
+    /**
+     * Log the current user out
+     *
+     * @return \Illuminate\View\View
+     */
+    public function logout(): View
     {
         Auth::logout();
         return view('logout');
